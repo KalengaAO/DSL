@@ -14,7 +14,7 @@ typedef struct s_dsl_c
 typedef struct s_token
 {
 	int		type;
-	char	**cmd;
+	char	*cmd;
 	struct	s_token *next;
 	struct	s_token *prev;
 }				t_token;

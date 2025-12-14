@@ -7,12 +7,14 @@ SRC_DIR = src
 OBJ_DIR = obj
 INC_DIR = inc
 
-SRC = $(SRC_DIR)/dsl.c \
-      $(SRC_DIR)/error.c \
-      $(SRC_DIR)/ft_split.c \
-      $(SRC_DIR)/get_input.c \
-      $(SRC_DIR)/lexic.c \
-      $(SRC_DIR)/utils.c
+SRC = $(SRC_DIR)/dsl.c 		\
+	$(SRC_DIR)/error.c 		\
+	$(SRC_DIR)/lexic.c 		\
+	$(SRC_DIR)/utils.c		\
+	$(SRC_DIR)/parser.c		\
+	$(SRC_DIR)/ft_split.c 	\
+	$(SRC_DIR)/get_input.c	\
+	$(SRC_DIR)/creat_list.c
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

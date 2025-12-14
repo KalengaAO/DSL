@@ -3,6 +3,7 @@
 int	main(int argc, char *argv[])
 {
 	char	*input;
+	t_token	*token;
 
 	if (argc == ONE)
 	{
@@ -11,6 +12,7 @@ int	main(int argc, char *argv[])
 	}
 	input = get_input(argv[ONE]);
 	lexic(input);
-	parser(input);
+	token = parser(input);
+	ft_remove_list(&token);
 	return (ZERO);
 }
