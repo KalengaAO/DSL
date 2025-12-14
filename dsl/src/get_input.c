@@ -1,35 +1,41 @@
 #include "../inc/dsl.h"
 
-static void error_in_get_input(t_dsl_c *dsl)
+void	init_char(t_dsl_c *dsl)
 {
-	dsl->input = free_ptr(dsl->input);
-	msg_error(LINE_LONG);
-	close(dsl.fd);
-	exit(ONE);
+	dsl->b_read = ONE;
+	dsl->buffer = (char *)calloc((BUFFER_SIZE + 1), sizeof(char));
+	dsl->input = (char *)calloc(ONE, sizeof(char));
+	if (!dsl->buffer || !dsl->input)
+	{
+		perror("DSL: in get input ");
+		exit(ONE);
+	}
 }
 
-t_dsl_c	get_input(char *file)
+char	*get_input(char *file)
 {
 	t_dsl_c		dsl;
-	char		buffer[N_LINE];
+	char		*tmp;
 
-	dsl = (t_dsl_c){ZERO};
-	dsl.fd = open(file, O_READ);
+	dsl = (t_dsl_c){0};
+	dsl.fd = open(file, O_RDONLY);
 	if (dsl.fd < ZERO)
 	{
 		msg_error(ERROR_FILE);
 		exit(ONE);
 	}
-	while (true)
+	init_char(&dsl);
+	while (dsl.b_read != 0)
 	{
-		dsl.b_read = read(dsl.fd, buffer, strlen(buffer));
-		if (dsl.b_read > TEN)
-			error_in_get_input(&dsl);
-		else if (dsl.b_read < ZERO)
-			break;
-		dsl.n_line++;
-		dsl.input = ft_strjoin(dsl.input, buffer);
+		dsl.b_read = read(dsl.fd, dsl.buffer, BUFFER_SIZE);
+		if (dsl.b_read == -1)
+			break ;
+		dsl.buffer[dsl.b_read] = '\0';
+		tmp = dsl.input;
+		dsl.input = ft_strjoin(tmp, dsl.buffer);
+		tmp = free_ptr(tmp);
 	}
 	close(dsl.fd);
-	return (dsl);
+	dsl.buffer = free_ptr(dsl.buffer);
+	return (dsl.input);
 }

@@ -6,11 +6,11 @@
 /*   By: akalenga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 21:03:42 by akalenga          #+#    #+#             */
-/*   Updated: 2025/06/16 15:46:53 by akalenga         ###   ########.fr       */
+/*   Updated: 2025/12/14 18:41:29 by akalenga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/dsl"
+#include "../inc/dsl.h"
 
 static int	ft_count_words(const char *s, char c)
 {

@@ -1,30 +1,20 @@
 #include "../inc/dsl.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*str;
-	int		it;
-	int		ij;
-	int		len;
+	char	*s3;
+	size_t	i;
 
-	str = NULL;
-	len = strlen(s1) + strlen(s2) + ONE;
-	str = calloc(len, sizeof(char));
-	if (!str)
-	{
-		perror("dsl: in strjoin: ");
-		exit(ONE);
-	}
-	ij = 0;
-	it = -1;
-	if (s1)
-		while (s1[ij])
-			str[++it] = s1[ij++];
-	ij = 0;
-	if (s2)
-		while (s2[ij])
-			str[it++] = s2[ij++];
-	str[it] = '\0';
-	s1 = free_ptr(s1);
-	return (str);
+	if (!s1 || !s2)
+		return (NULL);
+	s3 = (char *)calloc(sizeof(*s3), (strlen(s1) + strlen(s2) + 1));
+	if (!s3)
+		return (NULL);
+	i = 0;
+	while (*s1)
+		s3[i++] = *s1++;
+	while (*s2)
+		s3[i++] = *s2++;
+	s3[i] = '\0';
+	return (s3);
 }

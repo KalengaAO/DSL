@@ -1,20 +1,38 @@
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -Iinc
 
 NAME = dsl
-CC = gcc
-CFLAGS = -Iinc
-SRC = $(wildcard src/*.c)
-OBJ = $(SRC:src/%.c=obj/%.o)
+
+SRC_DIR = src
+OBJ_DIR = obj
+INC_DIR = inc
+
+SRC = $(SRC_DIR)/dsl.c \
+      $(SRC_DIR)/error.c \
+      $(SRC_DIR)/ft_split.c \
+      $(SRC_DIR)/get_input.c \
+      $(SRC_DIR)/lexic.c \
+      $(SRC_DIR)/utils.c
+
+OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $@
+	$(CC) $(CFLAGS) $(OBJ) -o  $(NAME)
 
-obj/%.o: src/%.c 
-	@mkdir -p obj
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -g -c $< -o $@
 
 clean:
-	rm -rf obj $(NAME)
+	rm -rf $(OBJ_DIR)
 
-re: clean all
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re

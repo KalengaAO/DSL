@@ -6,8 +6,8 @@
 typedef struct s_dsl_c
 {
 	int		fd;
-	int		n_line;
 	int		b_read;
+	char	*buffer;
 	char	*input;
 }			t_dsl_c;
 

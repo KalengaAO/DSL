@@ -2,14 +2,15 @@
 
 int	main(int argc, char *argv[])
 {
-	t_dsl_c		dsl;
+	char	*input;
 
-	if (argc > ONE)
+	if (argc == ONE)
 	{
 		msg_error(MANY_ARG);
 		return (ONE);
 	}
-	dsl = get_input(argv[ONE]);
-	lexic(&dsl);
+	input = get_input(argv[ONE]);
+	lexic(input);
+	parser(input);
 	return (ZERO);
 }

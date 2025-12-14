@@ -3,10 +3,10 @@
 
 #include "dsl.h"
 
-void		lexic(t_dsl_c *dsl);
+void		lexic(char *input);
 char		*free_ptr(char *str);
-t_dsl_c		get_input(char *file);
+char		*get_input(char *file);
 void		msg_error(char *error);
-char		*ft_strjoin(char *s1, char *s2);
+char		*ft_strjoin(char const *s1, char const *s2);
 
 #endif
