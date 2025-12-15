@@ -12,6 +12,7 @@ SRC = $(SRC_DIR)/dsl.c 		\
 	$(SRC_DIR)/lexic.c 		\
 	$(SRC_DIR)/utils.c		\
 	$(SRC_DIR)/parser.c		\
+	$(SRC_DIR)/executor.c	\
 	$(SRC_DIR)/ft_split.c 	\
 	$(SRC_DIR)/get_input.c	\
 	$(SRC_DIR)/creat_list.c

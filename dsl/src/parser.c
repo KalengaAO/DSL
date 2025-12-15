@@ -25,14 +25,14 @@ static void define_type(t_token **head)
 			token->type = OP_MA_EQ;
 		else if (!strncmp(token->cmd, "<=", THREE))
 			token->type = OP_MA_EQ;
-		else if (!strncm(token->cmd, "=", TWO))
+		else if (!strncmp(token->cmd, "=", TWO))
 			token->type = IQUAL;
 		else if (token->prev->type == IQUAL && isdigit(token->cmd[ZERO]))
 			token->type = ARG_NUMBER;
-		else if (token->prev->type == IQUAL && isalpha(token->cmd[ZERO])
+		else if (token->prev->type == IQUAL && isalpha(token->cmd[ZERO]))
 			token->type = ARG_STR;
-		else if (token->type == VAR && token->next && islower(token->next->cmd))
-			token->next->type = TYPE;
+		else if (token->prev->type == VAR)
+			token->type = TYPE;
 		else
 			token->type = ARG;
 		token = token->next;

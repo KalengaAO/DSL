@@ -9,6 +9,7 @@ t_token		*parser(char *input);
 char		*get_input(char *file);
 void		msg_error(char *error);
 char		**free_mat(char **cmd);
+void		executor(t_token *token);
 void		ft_remove_list(t_token **head);
 char		**ft_split(char const *s, char c);
 void		add_new(t_token **head, char *cmd);

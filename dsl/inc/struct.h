@@ -19,6 +19,17 @@ typedef struct s_token
 	struct	s_token *prev;
 }				t_token;
 
+typedef struct s_executor
+{
+	int		type;
+	int		num1;
+	int		num2;
+	char	*arg1;
+	char	*arg2;
+	char	*str1;
+	char	*str2;
+}			t_executor;
+
 typedef enum {
 	ZERO,  ONE, TWO, THREE,
 	FOUR, FIVE, SIX, SEVEN,

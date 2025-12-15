@@ -13,6 +13,7 @@ int	main(int argc, char *argv[])
 	input = get_input(argv[ONE]);
 	lexic(input);
 	token = parser(input);
+	executor(token);
 	ft_remove_list(&token);
 	return (ZERO);
 }
