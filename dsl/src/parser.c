@@ -7,6 +7,34 @@ static void define_type(t_token **head)
 	token = *head;
 	while(token)
 	{
+		if (!strncmp(token->cmd, "var", FOUR))
+			token->type = VAR;
+		else if (!strncmp(token->cmd, "se", THREE))
+			token->type = CONDICTION;
+		else if (!strncmp(token->cmd, "se_não", FIVE))
+			token->type = ELSE;
+		else if (!strncmp(token->cmd, "imprime", EIGHT))
+			token->type = PRINT;
+		else if (!strncmp(token->cmd, "%", TWO))
+			token->type = OP_RESTO;
+		else if (!strncmp(token->cmd, ">", TWO))
+			token->type = OP_MAIOR;
+		else if (!strncmp(token->cmd, "<", TWO))
+			token->type = OP_MENOR;
+		else if (!strncmp(token->cmd, ">=", THREE))
+			token->type = OP_MA_EQ;
+		else if (!strncmp(token->cmd, "<=", THREE))
+			token->type = OP_MA_EQ;
+		else if (!strncm(token->cmd, "=", TWO))
+			token->type = IQUAL;
+		else if (token->prev->type == IQUAL && isdigit(token->cmd[ZERO]))
+			token->type = ARG_NUMBER;
+		else if (token->prev->type == IQUAL && isalpha(token->cmd[ZERO])
+			token->type = ARG_STR;
+		else if (token->type == VAR && token->next && islower(token->next->cmd))
+			token->next->type = TYPE;
+		else
+			token->type = ARG;
 		token = token->next;
 	}
 }

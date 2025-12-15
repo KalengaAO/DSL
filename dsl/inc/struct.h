@@ -26,10 +26,10 @@ typedef enum {
 } t_number;
 
 typedef enum t_type{
-	CONDICTION, ARG_STR,
-	ARG_NUMBER, VAR, IQUAL,
+	CONDICTION, ELSE, ARG_STR,
+	ARG_NUMBER, VAR, IQUAL, TYPE,
 	OP_MAIOR, OP_MENOR, OP_RESTO,
-	OP_MAQ, OP_MEQ, PRINT, ARG
+	OP_MA_EQ, OP_ME_EQ, PRINT, ARG
 }		t_type;
 
 #endif
