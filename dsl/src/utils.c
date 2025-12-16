@@ -20,7 +20,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	s3 = (char *)calloc(sizeof(*s3), (strlen(s1) + strlen(s2) + 1));
+	s3 = (char *)calloc((strlen(s1) + strlen(s2) + 1), sizeof(*s3));
 	if (!s3)
 		return (NULL);
 	i = 0;
