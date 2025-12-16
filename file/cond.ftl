@@ -1,4 +1,4 @@
-var a = 2555
+var a = 255
 var b = 80
 
 se a < b
