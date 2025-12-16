@@ -9,5 +9,6 @@
 # define		DSL_BUF		"dsl_buf"
 # define		BUFFER_SIZE	42
 # define		SEP			-1
+# define		VAR_ERROR	"\033[31m dsl: syntax error: more var or no argument \033[0m"
 
 #endif

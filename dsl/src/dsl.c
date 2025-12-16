@@ -16,7 +16,7 @@ int	main(int argc, char *argv[])
 	if (syntax_error(token))
 	{
 		ft_remove_list(&token);
-		return (ONE)
+		return (ONE);
 	}
 	filter(token);
 	return (ZERO);
