@@ -1,5 +1,18 @@
 #include "../inc/dsl.h"
 
+void	ft_erro_msg(char const *error)
+{
+	write(STDERR_FILENO, error, strlen(error));
+}
+
+void	free_strs(t_executor *ex)
+{
+	ex->str1 = free_ptr(ex->str1);
+	ex->str1 = free_ptr(ex->str2);
+	ex->arg1 = free_ptr(ex->arg1);
+	ex->arg2 = free_ptr(ex->arg2);
+}
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*s3;

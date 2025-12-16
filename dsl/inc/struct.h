@@ -24,10 +24,10 @@ typedef struct s_executor
 	int		type;
 	int		num1;
 	int		num2;
-	char	*arg1;
-	char	*arg2;
 	char	*str1;
 	char	*str2;
+	char	*arg1;
+	char	*arg2;
 }			t_executor;
 
 typedef enum {
@@ -37,10 +37,21 @@ typedef enum {
 } t_number;
 
 typedef enum t_type{
-	CONDICTION, ELSE, ARG_STR,
-	ARG_NUMBER, VAR, IQUAL, TYPE,
-	OP_MAIOR, OP_MENOR, OP_RESTO,
-	OP_MA_EQ, OP_ME_EQ, PRINT, ARG
+	CONDICTION,
+	ELSE,
+	ARG_STR,
+	ARG_NUMBER,
+	VAR,
+	IQUAL,
+	EQ,
+	TYPE,
+	OP_MAIOR,
+	OP_MENOR,
+	OP_RESTO,
+	OP_MA_EQ,
+	OP_ME_EQ,
+	PRINT,
+	ARG
 }		t_type;
 
 #endif

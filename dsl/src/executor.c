@@ -1,45 +1,71 @@
 #include "../inc/dsl.h"
 
-static void maior_que(int a, int b, char *yes, char *not)
+static void op_maior(t_executor *ex)
 {
-	if (a > b)
-		puts(yes);
+	if (ex->num1 > ex->num2)
+		write(STDOUT_FILENO, ex->arg1, strlen(ex->arg1));
 	else
-		puts(not);
+		write(STDOUT_FILENO, ex->arg2, strlen(ex->arg2));
+   free_strs(ex);
 }
 
-void executor(t_token *token)
+static void op_menor(t_executor *ex)
 {
-	t_executor	ex;
-	t_token 	*tmp;
-	int			it;
+	if (ex->num1 < ex->num2)
+		write(STDOUT_FILENO, ex->arg1, strlen(ex->arg1));
+	else
+		write(STDOUT_FILENO, ex->arg2, strlen(ex->arg2));
+	free_strs(ex);
+}
 
-	ex = (t_executor){0};
-	tmp = token->next;
-	it = 0;
-	while (tmp)
-	{
-		if (tmp->prev->type == IQUAL && tmp->type == ARG_NUMBER)
-		{
-			ex.num1 = atoi(tmp->cmd);
-			while (tmp->type != ARG_NUMBER)
-				tmp = tmp->next;
-			ex.num2 = atoi(tmp->cmd);
-		}/*
-		else if (tmp->prev->type == IQUAL && tmp->type == ARG_STR)
-		{
-			ex.str1 = strdup(tmp->cmd);
-			while (tmp->type != ARG_STR)
-				tmp = tmp->next;
-			ex.str2 = strdup(tmp->cmd);
-		}
-		else if (tmp->type == OP_MAIOR)
-			ex.type = tmp->type;
-		else if (tmp->type == ARG && tmp->next->type == ELSE)
-			ex.arg1 = strdup(tmp->cmd);
-		else if (tmp->type == ARG && !tmp->next)
-			ex.arg2 = strdup(tmp->cmd);*/
-		tmp = tmp->next;
-	}
-	maior_que(ex.num1, ex.num2, ex.arg1, ex.arg2);
+static void op_resto(t_executor *ex)
+{
+	if (ex->num1 % ex->num2)
+		write(STDOUT_FILENO, ex->arg1, strlen(ex->arg1));
+	else
+		write(STDOUT_FILENO, ex->arg2, strlen(ex->arg2));
+	free_strs(ex);
+}
+
+static void op_maior_q(t_executor *ex)
+{
+	if (ex->num1 >= ex->num2)
+		write(STDOUT_FILENO, ex->arg1, strlen(ex->arg1));
+	else
+		write(STDOUT_FILENO, ex->arg2, strlen(ex->arg2));
+	free_strs(ex);
+}
+
+static void op_menor_q(t_executor *ex)
+{
+	if (ex->num1 <= ex->num2)
+		write(STDOUT_FILENO, ex->arg1, strlen(ex->arg1));
+	else
+		write(STDOUT_FILENO, ex->arg2, strlen(ex->arg2));
+	free_strs(ex);
+}
+
+static void op_equal(t_executor *ex)
+{
+	if (ex->num1 == ex->num2)
+		write(STDOUT_FILENO, ex->arg1, strlen(ex->arg1));
+	else
+		write(STDOUT_FILENO, ex->arg2, strlen(ex->arg2));
+	free_strs(ex);
+}
+
+void	executor(t_executor *ex)
+{
+	if (ex->type == OP_MAIOR)
+		op_maior(ex);
+	if (ex->type == OP_MENOR)
+		op_menor(ex);
+	if (ex->type == OP_RESTO)
+		op_resto(ex);
+	if (ex->type == OP_MA_EQ)
+		op_maior_q(ex);
+	if (ex->type == OP_ME_EQ)
+		op_menor_q(ex);
+	if (ex->type == EQ)
+		op_equal(ex);
 }

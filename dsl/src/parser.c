@@ -11,7 +11,7 @@ static void define_type(t_token **head)
 			token->type = VAR;
 		else if (!strncmp(token->cmd, "se", THREE))
 			token->type = CONDICTION;
-		else if (!strncmp(token->cmd, "se_não", FIVE))
+		else if (!strncmp(token->cmd, "se_nao", SEVEN))
 			token->type = ELSE;
 		else if (!strncmp(token->cmd, "imprime", EIGHT))
 			token->type = PRINT;
@@ -24,7 +24,9 @@ static void define_type(t_token **head)
 		else if (!strncmp(token->cmd, ">=", THREE))
 			token->type = OP_MA_EQ;
 		else if (!strncmp(token->cmd, "<=", THREE))
-			token->type = OP_MA_EQ;
+			token->type = OP_ME_EQ;
+		else if (!strncmp(token->cmd, "==", THREE))
+			token->type = EQ;
 		else if (!strncmp(token->cmd, "=", TWO))
 			token->type = IQUAL;
 		else if (token->prev->type == IQUAL && isdigit(token->cmd[ZERO]))

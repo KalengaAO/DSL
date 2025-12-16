@@ -31,8 +31,10 @@ void	lexic(char *input)
 			input[it] = SEP;
 		if (input[it] == '\"')
 		{
-			while (input[++it] != '\"')
+			input[it] = '\a';
+			while (input[it] && input[it] != '\"')
 				++it;
+			input[it] = '\a';
 		}
 		++it;
 	}

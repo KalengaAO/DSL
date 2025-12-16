@@ -26,7 +26,7 @@ void add_new(t_token **head, char *cmd)
 	new = calloc(ONE, sizeof(t_token));
 	new->next = NULL;
 	new->prev = NULL;
-	new->type = ZERO;
+	new->type = -1;
 	new->cmd = strdup(cmd);
 	if (!*head)
 	{
