@@ -12,7 +12,7 @@ void		msg_error(char *error);
 char		**free_mat(char **cmd);
 void		executor(t_executor *ex);
 void		free_strs(t_executor *ex);
-int			syntax_error(t_token *token);
+int			syntax_check(t_token *token);
 void		ft_erro_msg(char const *error);
 void		ft_remove_list(t_token **head);
 char		**ft_split(char const *s, char c);
